@@ -19,8 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WhatsApp',
       theme: ThemeData.dark().copyWith(
-        backgroundColor: backgroundColor,
+        scaffoldBackgroundColor: backgroundColor,
+        // the difference beetwen backgroundColor and scaffoldBackgroundColor is that backgroundColor is the color of the app bar so i change backgroundColor to scaffoldBackgroundColor
       ),
+      //here we are using the ResponsiveLayout widget to render the mobile or web layout
       home: const ResponsiveLayout(
         mobileScreenLayout: MobileScreenLayout(),
         webScreenLayout: WebScreenLayout(),
