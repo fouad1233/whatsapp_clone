@@ -10,61 +10,60 @@ class ContactsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        children: [
-          //expanded widget is used to make the list take all the space
-          Expanded(
-            child: ListView.builder(
-              //shrinkWrap is used to make the list view scrollable
-              shrinkWrap: true,
-              itemCount: info.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: ListTile(
-                      title: Text(
-                        info[index]['name'].toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
+      child: ListView.builder(
+        //shrinkWrap is used to make the list view scrollable
+        shrinkWrap: true,
+        itemCount: info.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              InkWell(
+                onTap: () {},
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: ListTile(
+                    title: Text(
+                      info[index]['name'].toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
                       ),
-                      subtitle: Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: Text(
-                          info[index]['message'].toString(),
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(info[index]['profilePic'].toString()),
-                      ),
-                      trailing: Text(
-                        info[index]['time'].toString(),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: Text(
+                        info[index]['message'].toString(),
                         style: const TextStyle(
                           color: Colors.grey,
-                          fontSize: 13,
+                          fontSize: 15,
                         ),
                       ),
                     ),
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundImage:
+                          NetworkImage(info[index]['profilePic'].toString()),
+                    ),
+                    trailing: Text(
+                      info[index]['time'].toString(),
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
-                );
-              },
-            ),
-          ),
-          const Divider(
-            color: dividerColor,
-            height: 20,
-            thickness: 0.5,
-            indent: 85,
-            endIndent: 20,)
-        ],
+                ),
+              ),
+              const Divider(
+                color: dividerColor,
+                height: 20,
+                thickness: 0.5,
+                indent: 85,
+                endIndent: 20,
+              )
+            ],
+          );
+        },
       ),
     );
   }
