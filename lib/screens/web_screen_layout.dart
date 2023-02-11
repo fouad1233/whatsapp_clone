@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/widgets/web_chat_appbar.dart';
 import 'package:whatsapp_clone/widgets/web_profile_bar.dart';
 import 'package:whatsapp_clone/widgets/web_search_bar.dart';
 
@@ -33,6 +34,13 @@ class WebScreenLayout extends StatelessWidget {
                 AssetImage('assets/backgroundImage.png'),
                 fit: BoxFit.cover, 
               ), 
+            ),
+            child: Column(
+              children: [
+                WebChatAppBar(),
+                //Chat List
+                //Mesage input Box
+              ],
             ),
           ),
         ],
