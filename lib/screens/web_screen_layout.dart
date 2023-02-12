@@ -3,6 +3,7 @@ import 'package:whatsapp_clone/widgets/web_chat_appbar.dart';
 import 'package:whatsapp_clone/widgets/web_profile_bar.dart';
 import 'package:whatsapp_clone/widgets/web_search_bar.dart';
 
+import '../widgets/chat_list.dart';
 import '../widgets/contacts_list.dart';
 
 class WebScreenLayout extends StatelessWidget {
@@ -30,15 +31,16 @@ class WebScreenLayout extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.7,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image:
-                AssetImage('assets/backgroundImage.png'),
-                fit: BoxFit.cover, 
-              ), 
+                image: AssetImage('assets/backgroundImage.png'),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Column(
-              children: [
+              children: const [
                 WebChatAppBar(),
-                //Chat List
+                Expanded(
+                  child: ChatList(),
+                ),
                 //Mesage input Box
               ],
             ),
