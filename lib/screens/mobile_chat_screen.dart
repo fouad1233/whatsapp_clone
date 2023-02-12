@@ -43,7 +43,33 @@ class MobileChatScreen extends StatelessWidget {
             decoration: InputDecoration(
               fillColor: mobileChatBoxColor,
               filled: true,
-              
+              prefixIcon: const Padding(
+                padding:   EdgeInsets.symmetric(horizontal: 20),
+                child: Icon(
+                  Icons.insert_emoticon,
+                  color: Colors.grey,
+                ),
+              ),
+              suffixIcon:  Padding(
+                padding: const  EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Icon(
+                      Icons.camera_alt,
+                      color: Colors.grey,
+                    ),
+                    Icon(
+                      Icons.attach_file,
+                      color: Colors.grey,
+                    ),
+                    Icon(
+                      Icons.money,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ),
               hintText: 'Type a message',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
@@ -52,6 +78,7 @@ class MobileChatScreen extends StatelessWidget {
                   style: BorderStyle.none,
                 ),
               ),
+              contentPadding: const EdgeInsets.all(10),
             ),
           ),
         ],
