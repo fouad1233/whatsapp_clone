@@ -5,6 +5,8 @@ import 'package:whatsapp_clone/common/widgets/custom_button.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:whatsapp_clone/features/auth/controller/auth_controller.dart';
 
+import '../../../common/utils/utils.dart';
+
 class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';
   const LoginScreen({super.key});
@@ -40,6 +42,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
       // Provider ref => Interact provider with provider
       // Widget ref => Interact provider with widget
+    }
+    else{
+      showSnackBar(context: context, content: 'Fill out all the fields');
     }
   }
 
@@ -81,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
               ],
             ),
-            SizedBox(height: size.height * 0.55),
+            SizedBox(height: size.height * 0.50),
             SizedBox(
               width: size.width * 0.30,
               child: CustomButton(
