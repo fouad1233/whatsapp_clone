@@ -85,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             SizedBox(
               width: size.width * 0.30,
               child: CustomButton(
-                onPressed: () {},
+                onPressed: sendPhoneNumber,
                 text: 'NEXT',
               ),
             ),
