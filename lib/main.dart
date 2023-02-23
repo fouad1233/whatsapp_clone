@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp_clone/colors.dart';
 import 'package:whatsapp_clone/features/landing/screens/landing_screen.dart';
 import 'package:whatsapp_clone/responsive/responsive_layout.dart';
@@ -8,12 +9,16 @@ import 'package:whatsapp_clone/screens/mobile_screen_layout.dart';
 import 'package:whatsapp_clone/screens/web_screen_layout.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,23 +29,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'WhatsApp',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor,
-        appBarTheme: const AppBarTheme(
-          color: appBarColor,
+        debugShowCheckedModeBanner: false,
+        title: 'WhatsApp',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: backgroundColor,
+          appBarTheme: const AppBarTheme(
+            color: appBarColor,
+          ),
+          // the difference beetwen backgroundColor and scaffoldBackgroundColor is that backgroundColor is the color of the app bar so i change backgroundColor to scaffoldBackgroundColor
         ),
-        // the difference beetwen backgroundColor and scaffoldBackgroundColor is that backgroundColor is the color of the app bar so i change backgroundColor to scaffoldBackgroundColor
-      ),
-      //here we are using the ResponsiveLayout widget to render the mobile or web layout
-      onGenerateRoute: (settings) => generateRoute(settings),
-      home: const LandingScreen()
-      /*const ResponsiveLayout(
+        //here we are using the ResponsiveLayout widget to render the mobile or web layout
+        onGenerateRoute: (settings) => generateRoute(settings),
+        home: const LandingScreen()
+        /*const ResponsiveLayout(
         mobileScreenLayout: MobileScreenLayout(),
         webScreenLayout: WebScreenLayout(),
       ),
       */
-    );
+        );
   }
 }
