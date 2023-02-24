@@ -29,7 +29,11 @@ class OTPScreen extends ConsumerWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const Text('We have sent you an SMS with a code.'),
+            const Text('We have sent you an SMS with a code.\nPlease enter it below',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+                ),
+            const SizedBox(height: 20),
             SizedBox(
               width: size.width * 0.5,
               child: TextField(
