@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whatsapp_clone/common/repositories/common_firebase_storage_repository.dart';
 import 'package:whatsapp_clone/features/auth/screens/user_information_screen.dart';
 
 import '../../../common/utils/utils.dart';
@@ -61,5 +64,27 @@ class AuthRepository {
     } on FirebaseAuthException catch (e) {
       showSnackBar(context: context, content: e.message!);
     }
+  }
+
+  void saveUserDataToFirebase({
+    required String name,
+    required File? profilePic,
+    required ProviderRef ref,
+    required BuildContext context,
+  }) async {
+    try {
+      String uid = auth.currentUser!.uid;
+      String photoUrl =
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png';
+
+      if (profilePic != null) {
+        photoUrl = await ref
+            .read(commonFirebaseStorageRepositoryProvider)
+            .storeFileToFirebase('profilePic/$uid', profilePic);
+      }
+    } catch (e) {
+      showSnackBar(context: context, content: e.toString());
+    }
+    ;
   }
 }
